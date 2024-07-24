@@ -1,7 +1,7 @@
-// Get the button and content elements
+// Typing effect for navbar title
 const pearly = document.getElementById("pearly");
+const pearl = "Pearl";
 
-// Function to simulate typing effect
 function typeWriter(element, text, index, speed) {
   if (index < text.length) {
     element.innerHTML += text.charAt(index);
@@ -10,10 +10,9 @@ function typeWriter(element, text, index, speed) {
   }
 }
 
-// Typing effect on pearl text
-const pearl = "Pearl";
 typeWriter(pearly, pearl, 0, 150);
 
+// Navbar active link handling
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('nav a');
 
@@ -41,7 +40,6 @@ function stickyNav() {
   }
 }
 
-// Smooth Scroll
 function smoothScroll(event) {
   event.preventDefault();
   const targetId = event.target.getAttribute('href');
@@ -58,13 +56,12 @@ window.addEventListener('scroll', () => {
   stickyNav();
 });
 
-// Add drop-in animation to p5 canvas
 window.addEventListener('load', () => {
   const p5Canvas = document.getElementById('p5-canvas');
   p5Canvas.classList.add('drop-in');
 });
 
-// Matter.js and p5.js integration for interactive divs
+// Matter.js and p5.js integration
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -93,18 +90,10 @@ function setup() {
 function addBoundaries() {
   const thickness = 50;
   World.add(engine.world, [
-    Bodies.rectangle(width / 2, -thickness / 2, width, thickness, {
-      isStatic: true,
-    }),
-    Bodies.rectangle(width / 2, height + thickness / 2, width, thickness, {
-      isStatic: true,
-    }),
-    Bodies.rectangle(-thickness / 2, height / 2, thickness, height, {
-      isStatic: true,
-    }),
-    Bodies.rectangle(width + thickness / 2, height / 2, thickness, height, {
-      isStatic: true,
-    }),
+    Bodies.rectangle(width / 2, -thickness / 2, width, thickness, { isStatic: true }),
+    Bodies.rectangle(width / 2, height + thickness / 2, width, thickness, { isStatic: true }),
+    Bodies.rectangle(-thickness / 2, height / 2, thickness, height, { isStatic: true }),
+    Bodies.rectangle(width + thickness / 2, height / 2, thickness, height, { isStatic: true }),
   ]);
 }
 
@@ -148,10 +137,7 @@ function mouseMoved() {
     lastMouseY = mouseY;
 
     items.forEach((item) => {
-      if (
-        dist(mouseX, mouseY, item.body.position.x, item.body.position.y) <
-        150
-      ) {
+      if (dist(mouseX, mouseY, item.body.position.x, item.body.position.y) < 150) {
         let forceMagnitude = 3;
         Body.applyForce(
           item.body,
@@ -167,4 +153,85 @@ function mouseMoved() {
       }
     });
   }
+}
+
+// GSAP and Barba.js animations
+const animationLeave = (container) => {
+  const tl = gsap.timeline({
+    onComplete: pageTransition(),
+  });
+
+  const heading = container.querySelector("h1");
+  const img = container.querySelectorAll("img");
+
+  tl.to(img, {
+    y: 200,
+    opacity: 0,
+  }).to(
+    heading,
+    {
+      y: 20,
+      opacity: 0,
+    },
+    "-=.5"
+  );
+};
+
+const pageTransition = () => {
+  const tl = gsap.timeline({ delay: 0.6 });
+  tl.to(".transition li", {
+    scaleY: 1,
+    transformOrigin: "bottom left",
+    stagger: 0.1,
+  });
+  tl.to(".transition li", {
+    scaleY: 0,
+    transformOrigin: "top left",
+    stagger: 0.1,
+  });
+  return tl;
+};
+
+const animationEnter = (container) => {
+  const tl = gsap.timeline();
+  const heading = container.querySelector("h1");
+  const img = container.querySelectorAll("img");
+
+  tl.from(img, {
+    y: 200,
+    opacity: 0,
+  }).from(heading, {
+    y: 20,
+    opacity: 0,
+  });
+  return tl;
+};
+
+barba.init({
+  sync: true,
+  transitions: [
+    {
+      async once({ next }) {
+        animationEnter(next.container);
+      },
+      async leave({ current }) {
+        const done = this.async();
+        animationLeave(current.container);
+        await delay(2300);
+        done();
+      },
+      async enter({ next }) {
+        animationEnter(next.container);
+      },
+    },
+  ],
+});
+
+function delay(n) {
+  n = n || 4000;
+  return new Promise((done) => {
+    setTimeout(() => {
+      done();
+    }, n);
+  });
 }
