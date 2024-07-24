@@ -10,6 +10,16 @@ function typeWriter(element, text, index, speed) {
   }
 }
 
+// New Typing effect for header h1
+const headerH1 = document.getElementById("typewriter-header");
+const headerText = headerH1.textContent; // Get the text from the h1 element
+headerH1.textContent = ""; // Clear the h1 element's content
+
+document.addEventListener("DOMContentLoaded", () => {
+  typeWriter(headerH1, headerText, 0, 120);
+});
+
+
 typeWriter(pearly, pearl, 0, 150);
 
 // Navbar active link handling
