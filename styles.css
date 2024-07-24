@@ -60,28 +60,44 @@ header h1 {
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: #444;
   color: white;
   padding: 1rem;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: calc(100% - 2rem); /* Adjusted for better fit with rounded corners */
+  margin: 1rem; /* Added for better positioning */
   z-index: 3;
+  border-radius: 10px;
 }
+
 
 .navbar-left h1 {
   margin: 0;
+  border-radius: 10px; /* Added for rounded corners */
+  padding: 0.5rem;
+  background-color: #555; /* Added for better visibility */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  border-radius: 10px; /* Added for rounded corners */
+  padding: 0.5rem;
+  background-color: #555; /* Added for better visibility */
 }
 
 .navbar-right a {
   color: white;
   margin: 0 1rem;
   text-decoration: none;
+  border-radius: 5px; /* Added for slightly rounded corners */
+  padding: 0.5rem 1rem; /* Added for better spacing and appearance */
 }
 
-.navbar-right a.active {
-  text-decoration: underline;
+.navbar-right a:hover {
+  background-color: #666; /* Added for hover effect */
 }
+
 
 section {
   padding: 2rem;
