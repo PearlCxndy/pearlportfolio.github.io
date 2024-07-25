@@ -74,9 +74,9 @@ nav {
 .navbar-right {
   display: flex;
   align-items: center;
-  border-radius: 20px; /* Rounded square background */
-  padding: 0.5rem 1rem; /* Padding for better appearance */
-  background-color: #555; /* Background color for visibility */
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  background-color: #555;
 }
 
 .navbar-right a {
@@ -87,13 +87,36 @@ nav {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 50px;
-  overflow: hidden; /* Ensure the pseudo-element is contained within the link */
+  overflow: hidden;
   transition: color 0.3s;
+}
+
+.navbar-right a:hover {
+  animation: wobble 1s ease;
+  color: white; /* Keep text white on hover */
+}
+
+.navbar-right a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: rgb(255, 255, 255);
+  transition: width 0.3s;
+}
+
+.navbar-right a:hover::after {
+  width: 100%;
+}
+
+.navbar-right a.active {
+  background-color: rgb(255, 255, 255); /* Active link background color */
+  color: #fff; /* Active link text color */
 }
 
 section {
   padding: 2rem;
-  margin: 0; /* Removed margin to avoid extra spacing */
+  margin: 0;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -152,9 +175,19 @@ footer {
 }
 
 .transition li {
-  background: #f0f;
+  background: rgb(255, 255, 255);
   width: 30%;
   height: 100%;
   transform: scaleY(0);
   transform-origin: bottom;
+}
+
+@keyframes wobble {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(10deg); }
+  30% { transform: rotate(-10deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
 }
