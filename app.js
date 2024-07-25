@@ -242,3 +242,40 @@ function delay(n) {
     }, n);
   });
 }
+
+
+// Horizontal Scroll Functionality
+const scroll = document.querySelector(".scroll");
+const activeSlide = document.querySelector(".active-slide");
+const slides = document.querySelectorAll(".slide");
+
+let isDown = false;
+let scrollX;
+let scrollLeft;
+
+scroll.addEventListener("mouseup", () => {
+  isDown = false;
+  scroll.classList.remove("active");
+});
+
+scroll.addEventListener("mouseleave", () => {
+  isDown = false;
+  scroll.classList.remove("active");
+});
+
+scroll.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  isDown = true;
+  scroll.classList.add("active");
+  scrollX = e.pageX - scroll.offsetLeft;
+  scrollLeft = scroll.scrollLeft;
+});
+
+scroll.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const element = e.pageX - scroll.offsetLeft;
+  const scrolling = (element - scrollX) * 2;
+  scroll.scrollLeft = scrollLeft - scrolling;
+});
+

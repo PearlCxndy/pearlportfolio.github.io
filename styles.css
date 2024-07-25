@@ -191,3 +191,43 @@ footer {
   75% { transform: rotate(10deg); }
   100% { transform: rotate(0deg); }
 }
+/* Slider specific styles */
+
+.slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  display: flex;
+  width: max-content;
+  padding: 0 150px;
+  height: 100%;
+  align-items: center;
+  gap: 100px;
+}
+
+.slide {
+  min-width: 500px;
+  height: 500px;
+  background: gray;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* Add styles for horizontal scrolling */
+.scroll {
+  cursor: grab;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll:active {
+  cursor: grabbing;
+}
