@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   typeWriter(headerH1, headerText, 0, 120);
 });
 
-
 typeWriter(pearly, pearl, 0, 150);
 
 // Navbar active link handling
@@ -33,16 +32,14 @@ function setActiveLink() {
     const sectionBottom = sectionTop + section.offsetHeight;
     if (scrollY >= sectionTop && scrollY < sectionBottom) {
       navLinks.forEach((link) => link.classList.remove('active'));
-      navLinks.forEach((link) => link.classList.add('inactive'));
       navLinks[index].classList.add('active');
-      navLinks[index].classList.remove('inactive');
     }
   });
 }
 
 function stickyNav() {
   const nav = document.querySelector('nav');
-  const headerHeight = document.querySelector('header').offsetHeight;
+  const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0;
   if (window.scrollY >= headerHeight) {
     nav.classList.add('sticky');
   } else {
@@ -52,7 +49,7 @@ function stickyNav() {
 
 function smoothScroll(event) {
   event.preventDefault();
-  const targetId = event.target.getAttribute('href');
+  const targetId = event.currentTarget.getAttribute('href');
   const targetSection = document.querySelector(targetId);
   targetSection.scrollIntoView({ behavior: 'smooth' });
 }

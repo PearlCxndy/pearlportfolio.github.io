@@ -4,8 +4,7 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -60,44 +59,37 @@ header h1 {
 nav {
   display: flex;
   justify-content: space-between;
-  color: white;
-  padding: 1rem;
+  align-items: center;
+  padding: 10px 20px;
   position: fixed;
   top: 0;
-  width: calc(100% - 2rem); /* Adjusted for better fit with rounded corners */
-  margin: 1rem; /* Added for better positioning */
+  width: 100%;
   z-index: 3;
-  border-radius: 10px;
 }
 
-
 .navbar-left h1 {
-  margin: 0;
-  border-radius: 10px; /* Added for rounded corners */
-  padding: 0.5rem;
-  background-color: #555; /* Added for better visibility */
+  color: white;
 }
 
 .navbar-right {
   display: flex;
   align-items: center;
-  border-radius: 10px; /* Added for rounded corners */
-  padding: 0.5rem;
-  background-color: #555; /* Added for better visibility */
+  border-radius: 20px; /* Rounded square background */
+  padding: 0.5rem 1rem; /* Padding for better appearance */
+  background-color: #555; /* Background color for visibility */
 }
 
 .navbar-right a {
   color: white;
-  margin: 0 1rem;
   text-decoration: none;
-  border-radius: 5px; /* Added for slightly rounded corners */
-  padding: 0.5rem 1rem; /* Added for better spacing and appearance */
+  margin: 0 10px;
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 50px;
+  overflow: hidden; /* Ensure the pseudo-element is contained within the link */
+  transition: color 0.3s;
 }
-
-.navbar-right a:hover {
-  background-color: #666; /* Added for hover effect */
-}
-
 
 section {
   padding: 2rem;
@@ -109,16 +101,15 @@ section {
   z-index: 2;
 }
 
-#home{
+#home {
   background: rgba(255, 255, 255, 0.8);
 }
 
-#about,
-#skills {
+#about, #skills {
   background: rgba(252, 174, 174, 0.8);
 }
-#education,
-#contacts {
+
+#education, #contacts {
   background: rgba(255, 255, 255, 0.8);
 }
 
