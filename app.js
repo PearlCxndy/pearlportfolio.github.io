@@ -1,3 +1,5 @@
+
+
 // Typing effect for navbar title
 const pearly = document.getElementById("pearly");
 const pearl = "Pearl";
@@ -11,15 +13,22 @@ function typeWriter(element, text, index, speed) {
 }
 
 // New Typing effect for header h1
+// New Typing effect for header h1
 const headerH1 = document.getElementById("typewriter-header");
 const headerText = headerH1.textContent;
 headerH1.textContent = "";
 
+const achievementsH1 = document.getElementById("typewriter-achievements");
+const achievementsText = achievementsH1.textContent;
+achievementsH1.textContent = "";
+
 document.addEventListener("DOMContentLoaded", () => {
   typeWriter(headerH1, headerText, 0, 120);
+  typeWriter(achievementsH1, achievementsText, 0, 100);
 });
 
 typeWriter(pearly, pearl, 0, 150);
+
 
 // Navbar active link handling
 const sections = document.querySelectorAll('section');
@@ -67,6 +76,8 @@ window.addEventListener('load', () => {
   const p5Canvas = document.getElementById('p5-canvas');
   p5Canvas.classList.add('drop-in');
 });
+
+
 
 // Matter.js and p5.js integration
 const Engine = Matter.Engine;
@@ -138,6 +149,9 @@ class Item {
   }
 }
 
+
+
+
 function mouseMoved() {
   if (dist(mouseX, mouseY, lastMouseX, lastMouseY) > 10) {
     lastMouseX = mouseX;
@@ -199,20 +213,51 @@ const pageTransition = () => {
   return tl;
 };
 
-const animationEnter = (container) => {
-  const tl = gsap.timeline();
-  const heading = container.querySelector("h1");
-  const img = container.querySelectorAll("img");
 
-  tl.from(img, {
-    y: 200,
-    opacity: 0,
-  }).from(heading, {
-    y: 20,
-    opacity: 0,
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Select necessary elements
+  const slider = document.querySelector('.slider');
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const activeSlide = document.querySelector('.active-slide');
+  const slides = document.querySelectorAll('.slide');
+
+  // Calculate the maximum scrollable width
+  let maxScroll = sliderWrapper.scrollWidth - slider.clientWidth;
+
+  // Function to update the active slide number
+  function updateActiveSlideNumber() {
+      const totalSlides = slides.length;
+      const partWidth = maxScroll / totalSlides;
+      const currentSlideIndex = Math.round(slider.scrollLeft / partWidth);
+      activeSlide.textContent = `${currentSlideIndex + 1}/${totalSlides}`;
+  }
+
+  // Function to update maxScroll on window resize
+  function updateMaxScroll() {
+      maxScroll = sliderWrapper.scrollWidth - slider.clientWidth;
+  }
+
+  // Listen to the horizontal scroll event
+  slider.addEventListener('scroll', updateActiveSlideNumber);
+
+  // Update maxScroll on window resize
+  window.addEventListener('resize', updateMaxScroll);
+
+  // Initial call to set the correct maxScroll value
+  updateMaxScroll();
+  updateActiveSlideNumber(); // Initial update to display the correct slide number
+});
+
+function delay(n) {
+  n = n || 4000;
+  return new Promise((done) => {
+    setTimeout(() => {
+      done();
+    }, n);
   });
-  return tl;
-};
+}
+
 
 barba.init({
   sync: true,
@@ -234,48 +279,4 @@ barba.init({
   ],
 });
 
-function delay(n) {
-  n = n || 4000;
-  return new Promise((done) => {
-    setTimeout(() => {
-      done();
-    }, n);
-  });
-}
-
-
-// Horizontal Scroll Functionality
-const scroll = document.querySelector(".scroll");
-const activeSlide = document.querySelector(".active-slide");
-const slides = document.querySelectorAll(".slide");
-
-let isDown = false;
-let scrollX;
-let scrollLeft;
-
-scroll.addEventListener("mouseup", () => {
-  isDown = false;
-  scroll.classList.remove("active");
-});
-
-scroll.addEventListener("mouseleave", () => {
-  isDown = false;
-  scroll.classList.remove("active");
-});
-
-scroll.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  isDown = true;
-  scroll.classList.add("active");
-  scrollX = e.pageX - scroll.offsetLeft;
-  scrollLeft = scroll.scrollLeft;
-});
-
-scroll.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const element = e.pageX - scroll.offsetLeft;
-  const scrolling = (element - scrollX) * 2;
-  scroll.scrollLeft = scrollLeft - scrolling;
-});
 

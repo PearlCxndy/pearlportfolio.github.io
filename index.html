@@ -10,6 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://unpkg.com/@barba/core"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider-min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css">
 </head>
 <body>
     <nav>
@@ -41,26 +44,96 @@
         <li></li>
     </ul>
     <section id="home">
-        <h1>Github</h1>
+      <div class="home-left">
+        <div class="home-left-content">
+          <h1 id="typewriter-header">Suchanan Unhavaithaya (Pearl)</h1>
+          <h2>Write a bio for yourself for a personal website. (logo of languages I can code)</h2>
+        </div>
+        <div class="home-logos">
+          <div class="logos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg" alt="C Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C++_Logo.svg" alt="C++ Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Csharp_Logo.png" alt="C# Logo">
+            <img src="https://blog.golang.org/go-brand/Go-Logo/PNG/Go-Logo_LightBlue.png" alt="GoLang Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Haskell-Logo.svg" alt="Haskell Logo">
+            <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" alt="MATLAB Logo">
+            <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" alt="TypeScript Logo">
+          </div>
+        </div>
+      </div>
+      <div class="home-right">
+        <img src="./images/04.jpg"  alt="Your Picture">
+      </div>
     </section>
 
     <section id="interactive">
         <header>
-            <h1 id="typewriter-header">Suchanan Unhavaithaya (Pearl)</h1>
+          <h1 id="typewriter-achievements">what i have achieved my journey so far !</h1>
+          
         </header>
         <div id="p5-canvas"></div>
     </section>
 
     <section id="about">
-        <div class="about">
-            <p>
-                Hello I am Suchanan Unhavaithaya.<br>I mastered <h4>I love Paula (My dog)</h4>
-            </p>
+      <div class="timeline">
+        <h1 id="typewriter-about">Education</h1>
+        <div class="timeline-item left" id="item1">
+          <div class="timeline-item-content">
+            <h4>2015 - 2020</h4>
+            <p>Satit Prasanmit International Programme (SPIP)</p>
+            <p>IGCSE Grades: A*A*A*A*: MATH, PHYSIC, IT, ART, A A A B OVERALL</p>
+            <span>2015 - 2020</span>
+          </div>
         </div>
+        <div class="timeline-item right" id="item2">
+          <div class="timeline-item-content">
+            <h4>2020 - 2021</h4>
+            <p>Kaplan International Pathway London</p>
+            <p>Highschool Computer Science</p>
+            <p>Degree: 2:1</p>
+            <span>2020 - 2021</span>
+          </div>
+        </div>
+        <div class="timeline-item left" id="item3">
+          <div class="timeline-item-content">
+            <h4>2021 - 2024</h4>
+            <p>University of Bristol</p>
+            <p>Computer Science (BSc)</p>
+            <p>Grades: 72% passed</p>
+            <span>2021 - 2024</span>
+          </div>
+        </div>
+        <div class="timeline-item right" id="item4">
+          <div class="timeline-item-content">
+            <h4>2024 - now</h4>
+            <p>University of the Arts London</p>
+            <p>MA/MSc Computing and Creative Industry (Modular)</p>
+            <span>2024 - now</span>
+          </div>
+        </div>
+      </div>
     </section>
-
-    <section id="skills">
+      </div>
+    </section>
     
+    
+    <section id="skills">
+      <div class="marker-wrapper">
+        <div class="marker">
+          <div class="grab"></div>
+        </div>
+        <div class="active-slide">1/10</div>
+      </div>
+  
       <div class="slider scroll">
         <div class="slider-wrapper">
           <div class="slide">
@@ -98,20 +171,24 @@
     </section>
 
     <section id="education">
-        <h2>Section 4</h2>
-        <p>This is the content of section 4.</p>
+        <h2>what you're interested in,  (Hobby)
+          Singing , Dancing , Painting , immersive art exploration , Gaming/Coding
+          </h2>
+          <h3>what you would like to do in the future, 
+            what are your values in life and at work, what sort of projects you would like to work on, what sorts of collaboration you're open to.
+            </h3>
     </section>
 
     <section id="contacts">
-        <h2>Section 5</h2>
-        <p>This is the content of section 5.</p>
+        <h2>Contacts</h2>
+        <p>GITHUB INSTAGRAM LINKEDIN</p>
     </section>
 
     <footer>
         <p>&copy; 2024 Pearl. All rights reserved.</p>
     </footer>
 
-    <script src="app.js"></script>
-
+    <script src="app.js" defer></script>
+    
 </body>
 </html>
