@@ -198,20 +198,7 @@ const animationLeave = (container) => {
   );
 };
 
-const pageTransition = () => {
-  const tl = gsap.timeline({ delay: 0.6 });
-  tl.to(".transition li", {
-    scaleY: 1,
-    transformOrigin: "bottom left",
-    stagger: 0.1,
-  });
-  tl.to(".transition li", {
-    scaleY: 0,
-    transformOrigin: "top left",
-    stagger: 0.1,
-  });
-  return tl;
-};
+
 
 
 

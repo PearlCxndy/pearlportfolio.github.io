@@ -100,7 +100,7 @@ html, body {
   padding: 20px; /* Add padding for spacing */
 }
 
-#typewriter-about{
+#abouttext{
   font-family: "Circular Std", sans-serif;
   font-size: 3vw;
   font-weight: 450;
@@ -110,7 +110,6 @@ html, body {
   text-align: end;
   background: transparent;
 }
-
 
 .timeline {
   position: relative;
@@ -129,7 +128,6 @@ html, body {
   bottom: 0;
   left: 50%;
   margin-left: -3px;
-  
 }
 
 .timeline-item {
@@ -139,23 +137,23 @@ html, body {
   width: 50%;
 }
 
-.timeline-item::after {
+.timeline-item::before {
   content: '';
   position: absolute;
   width: 25px;
   height: 25px;
   right: -17px;
-  border: 4px solid #ff9f55;
   top: 15px;
-  border-radius: 50%;
-  z-index: 1;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff9f55"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+  background-size: contain;
 }
 
-.timeline-item.left::after {
+
+.timeline-item.left::before {
   left: -17px;
 }
 
-.timeline-item.right::after {
+.timeline-item.right::before {
   right: -17px;
 }
 
@@ -208,7 +206,7 @@ html, body {
     padding-right: 25px;
   }
 
-  .timeline-item::after {
+  .timeline-item::before {
     left: 60px;
   }
 
@@ -367,26 +365,6 @@ footer {
   filter: grayscale(100%);
 }
 
-.transition {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  pointer-events: none;
-  z-index: 4;
-}
-
-.transition li {
-  background: rgb(255, 255, 255);
-  width: 30%;
-  height: 100%;
-  transform: scaleY(0);
-  transform-origin: bottom;
-}
 
 @keyframes wobble {
   0% { transform: rotate(0deg); }
@@ -434,32 +412,11 @@ img {
   height: 100vh;
 }
 
-.marker {
-  position: relative;
-  width: 2px;
-  height: 100%;
-  background: #000;
-}
-
-.marker:after {
-  position: absolute;
-  content: "";
-  display: block;
-  top: 50px;
-  left: -20px;
-  width: 40px;
-  height: 40px;
-  background-color: #fff;
-  border: 2px solid #000;
-  border-radius: 100%;
-}
-
 .active-slide {
   position: absolute;
   top: 60px;
   left: 40px;
-  font-family: "PP Supply Sans";
-  font-size: 15px;
+  font-size: 30px;
 }
 
 
@@ -472,4 +429,63 @@ img {
 
 .scroll:active {
   cursor: grabbing;
+}
+
+/* POLAROID */
+
+
+figure {
+  width: 200px; /* Adjusted width */
+  height: 240px; /* Adjusted height */
+  position: absolute;
+  background-color: #eaeaea;
+  padding: 10px 10px 50px 10px; /* Adjusted padding */
+  margin: 0;
+  z-index: 1;
+  transform: rotate(var(--rotation));
+  top: var(--top);
+  left: var(--left);
+}
+
+figure img {
+  width: 100%;
+  height: auto; /* Ensure the image scales properly */
+}
+
+figcaption {
+  font-family: 'Caveat', cursive;
+  font-size: 18px; /* Adjusted font size */
+  text-align: center;
+  color: #2c2c2c;
+  margin-top: 15px; /* Adjusted margin */
+}
+
+figure:before,
+figure:after {
+  content: "";
+  position: absolute;
+  height: 30px; /* Adjusted height */
+  width: 100px; /* Adjusted width */
+  background-color: rgba(102, 102, 102, 0.6);
+  transform: rotate(-40deg);
+}
+
+figure:before {
+  top: 3px;
+  left: -30px; /* Adjusted position */
+}
+
+figure:after {
+  bottom: 3px;
+  right: -35px; /* Adjusted position */
+}
+
+.polaroid-container {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjusted height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
 }
