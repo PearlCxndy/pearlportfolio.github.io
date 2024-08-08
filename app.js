@@ -236,6 +236,27 @@ document.addEventListener('DOMContentLoaded', () => {
   updateActiveSlideNumber(); // Initial update to display the correct slide number
 });
 
+
+
+// contact
+
+document.addEventListener("DOMContentLoaded", function () {
+  const contactItems = document.querySelectorAll(".contact-item");
+  const overlay = document.querySelector(".overlay");
+
+  contactItems.forEach((item) => {
+    item.addEventListener("mouseover", function () {
+      const color = item.getAttribute("data-color");
+      overlay.className = "overlay bg-color-" + color;
+    });
+
+    item.addEventListener("mouseout", function () {
+      overlay.className = "overlay";
+    });
+  });
+});
+
+
 function delay(n) {
   n = n || 4000;
   return new Promise((done) => {
@@ -265,5 +286,4 @@ barba.init({
     },
   ],
 });
-
 
