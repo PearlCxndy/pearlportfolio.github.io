@@ -12,6 +12,48 @@ html, body {
   font-family: Arial, sans-serif;
 }
 
+.adjusted-image {
+  width: 600px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+
+#interactive h2{
+  text-align: center; /* Align text to the left */
+  max-width: 100%; /* Ensure it doesn't exceed the width of the logos */
+  color: #fff;
+}
+
+
+#skills h1{
+  max-width: 100%; /* Ensure it doesn't exceed the width of the logos */
+  color: #000;
+  text-align: left; /* Justify the text */
+  font-size:3rem; /* Adjust the size as needed */
+  align-items: flex-end; 
+}
+
+
+#skills h3{
+  max-width: 100%; /* Ensure it doesn't exceed the width of the logos */
+  color: #fff;
+  text-align: right; /* Justify the text */
+  font-size:6rem; /* Adjust the size as needed */
+  align-items: flex-end; 
+}
+
+h3 {
+  font-size: 1rem; /* Adjust the size as needed */
+  text-align: justify; /* Justify the text */
+  margin-bottom: 1rem; /* Adjust the spacing below the heading */
+  margin-right: 3rem; /* Adjust the spacing below the heading */
+  line-height: 1; /* Increase line height for better readability */
+}
+
 #home {
   display: flex;
   justify-content: space-between; /* Distribute space between the two columns */
@@ -28,6 +70,7 @@ html, body {
   justify-content: center; /* Center content vertically */
   gap: 20px; /* Add space between elements */
 }
+
 
 #typewriter-header {
   font-size: 4rem; /* Adjust the size as needed */
@@ -71,7 +114,8 @@ html, body {
   width: 50px;
   height: 50px;
   object-fit: contain;
-  filter: grayscale(100%) sepia(100%) hue-rotate(190deg) saturate(1000%);
+  filter: grayscale(100%) sepia(100%) hue-rotate(40deg) saturate(400%) brightness(100%);
+
 }
 
 .home-right {
@@ -224,9 +268,7 @@ html, body {
 }
 
 
-
-
-#interactive, #home, #about, #skills, #education, #contacts { 
+#interactive, #home, #about, #skills, #education { 
   height: 100vh; 
   position: relative; 
   z-index: 1; 
@@ -328,7 +370,7 @@ section {
 }
 
 #about, #skills {
-  background: rgba(252, 174, 174, 0.8);
+  background: rgba(190, 171, 171, 0.8);
 }
 
 
@@ -354,7 +396,6 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%);
 }
 
 
@@ -369,13 +410,17 @@ footer {
 }
 /* Slider specific styles */
 
+
+
 .slider {
+  margin-top: -60px; /* Move the slider up by 20px */
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
 .slider-wrapper {
+  margin-top: -60px; /* Move the slider up by 20px */
   width: max-content;
   padding: 0 150px;
   height: 100%;
@@ -385,30 +430,43 @@ footer {
 }
 
 .slide {
+  position: relative;
   width: 500px;
-  height: 500px !important;
-  background: gray;
+  height: 500px;
 }
 
-img {
+.slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.marker-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: max-content;
-  height: 100vh;
-}
-
 .active-slide {
   position: absolute;
-  top: 60px;
+  top: 200px;
   left: 40px;
-  font-size: 30px;
+  font-size: 50px;
+}
+
+.slide-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.slide-text h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+}
+
+.slide-text p {
+  margin: 0;
+  font-size: 1rem;
 }
 
 
@@ -427,21 +485,24 @@ img {
 
 
 figure {
-  width: 200px; /* Adjusted width */
-  height: 240px; /* Adjusted height */
+  width: 200px; /* Adjust the width of the polaroid */
+  height: 240px; /* Adjust the height of the polaroid */
   position: absolute;
   background-color: #eaeaea;
-  padding: 10px 10px 50px 10px; /* Adjusted padding */
+  padding: 10px 10px 50px 10px; /* Adjust padding */
   margin: 0;
   z-index: 1;
   transform: rotate(var(--rotation));
   top: var(--top);
   left: var(--left);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
 }
 
 figure img {
-  width: 100%;
-  height: auto; /* Ensure the image scales properly */
+  width: 100%;  /* Make the image fill the width of the container */
+  height: 100%; /* Make the image fill the height of the container */
+  object-fit: cover; /* Cover the container while preserving aspect ratio */
+  border-radius: 5px; /* Optional: Add slight border radius for effect */
 }
 
 figcaption {
@@ -449,9 +510,11 @@ figcaption {
   font-size: 18px; /* Adjusted font size */
   text-align: center;
   color: #2c2c2c;
-  margin-top: 15px; /* Adjusted margin */
+  margin-top: 10px; /* Adjusted margin */
+  line-height: 1; /* Adjusted line height */
 }
 
+/* tapes*/
 figure:before,
 figure:after {
   content: "";
@@ -471,6 +534,8 @@ figure:after {
   bottom: 3px;
   right: -35px; /* Adjusted position */
 }
+
+/* --- */
 
 .polaroid-container {
   position: relative;
@@ -492,6 +557,15 @@ figure:after {
 }
 
 #education h3 {
+  display: inline-block; /* Ensures the background only covers the text */
+  background-color: white; /* Sets the background color to white */
+  padding: 5px 10px; /* Adds padding around the text */
+  border-radius: 5px; /* Optional: Adds rounded corners */
+  color: black; /* Sets the text color, adjust as needed */
+  font-weight: bold; /* Makes the text bold */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a slight shadow */
+  text-align: center; /* Centers the text within the element */
+  margin: 0 auto; /* Centers the element itself horizontally */
   margin-bottom: 50px; /* Add margin to space out the text and the contacts section */
 }
 
@@ -532,13 +606,13 @@ figure:after {
 }
 
 .bg-color-red {
-  background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red */
+  background-color: rgba(83, 78, 78, 0.5); /* Semi-transparent red */
 }
 
 .bg-color-blue {
-  background-color: rgba(0, 0, 255, 0.5); /* Semi-transparent blue */
+  background-color: rgba(228, 61, 244, 0.5); /* Semi-transparent blue */
 }
 
 .bg-color-green {
-  background-color: rgba(0, 255, 0, 0.5); /* Semi-transparent green */
+  background-color: rgba(0, 8, 255, 0.5); /* Semi-transparent green */
 }

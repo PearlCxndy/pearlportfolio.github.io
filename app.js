@@ -13,7 +13,6 @@ function typeWriter(element, text, index, speed) {
 }
 
 // New Typing effect for header h1
-// New Typing effect for header h1
 const headerH1 = document.getElementById("typewriter-header");
 const headerText = headerH1.textContent;
 headerH1.textContent = "";
@@ -23,7 +22,8 @@ const achievementsText = achievementsH1.textContent;
 achievementsH1.textContent = "";
 
 document.addEventListener("DOMContentLoaded", () => {
-  typeWriter(headerH1, headerText, 0, 120);
+  typeWriter(headerH1, headerText, 0, 100
+    );
   typeWriter(achievementsH1, achievementsText, 0, 100);
 });
 
@@ -101,7 +101,7 @@ function setup() {
   for (let i = 0; i < 12; i++) {
     let x = random(100, width - 100);
     let y = random(100, height - 100);
-    items.push(new Item(x, y, `./assets/img${i + 1}.jpg`));
+    items.push(new Item(x, y, `./assets/img${i + 1}.JPG`));
   }
 }
 
@@ -215,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Function to update the active slide number
   function updateActiveSlideNumber() {
       const totalSlides = slides.length;
-      const partWidth = maxScroll / totalSlides;
+      const partWidth = maxScroll / (totalSlides - 1); // Adjust to prevent 11/10 issue
       const currentSlideIndex = Math.round(slider.scrollLeft / partWidth);
-      activeSlide.textContent = `${currentSlideIndex + 1}/${totalSlides}`;
+      activeSlide.textContent = `${Math.min(currentSlideIndex + 1, totalSlides)}/${totalSlides}`;
   }
 
   // Function to update maxScroll on window resize
@@ -235,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMaxScroll();
   updateActiveSlideNumber(); // Initial update to display the correct slide number
 });
+
 
 
 
