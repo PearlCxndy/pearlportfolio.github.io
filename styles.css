@@ -275,6 +275,13 @@ h3 {
   background: transparent; 
 }
 
+#education { 
+  height: 150 vh; 
+  position: relative; 
+  z-index: 1; 
+  background: transparent; 
+}
+
 header {
   position: absolute;
   top: 50%;
@@ -540,11 +547,19 @@ figure:after {
 .polaroid-container {
   position: relative;
   width: 100%;
-  height: 400px; /* Adjusted height */
+  height: 400px; /* Adjust the height as needed */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 50px 0;
+  justify-content: center; /* Center the polaroid container horizontally */
+  align-items: center; /* Center the polaroid container vertically */
+  margin: 0 auto; /* Center the container in the middle of the page */
+}
+
+.polaroid-container figure {
+  position: absolute;
+  transform: rotate(var(--rotation));
+  top: var(--top);
+  left: calc(50% + var(--left)); /* Position relative to the center of the container */
+  margin-left: -100px; /* Adjust to center the figure's width */
 }
 
 /* CONTACT */
